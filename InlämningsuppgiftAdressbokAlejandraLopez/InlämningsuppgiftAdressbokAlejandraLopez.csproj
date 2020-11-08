@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <None Update="adressbook.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
