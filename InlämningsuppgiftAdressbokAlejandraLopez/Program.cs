@@ -41,7 +41,7 @@ namespace InlämningsuppgiftAdressbokAlejandraLopez
             int numLine = 1;
             while ((line = file.ReadLine()) != null)
             {
-                if(line != "")
+                if (line != "")
                 {
                     string[] infoPerson = line.Split(" | ");
                     Peoples.Add(
@@ -130,16 +130,15 @@ namespace InlämningsuppgiftAdressbokAlejandraLopez
         {
             var fileName = @".\adressbook.txt";
             BookContac bookContac = new BookContac(fileName);
-
             WriteLine("Welcome to the ADRESSBOOK!");
             WriteLine("--------------------------------MENU-------------------------------");
-            WriteLine("Introduce 'exit' for to finish the program"); // salir
-            WriteLine("Introduce 'introduce' for to create a contact"); // crear
-            WriteLine("Introduce 'save' for to save contact information"); // guardar
-            WriteLine("Introduce 'update' for to edit an existens contact"); // editar
-            WriteLine("Introduce 'show' for to see all the contacts"); // mostrar
-            WriteLine("Introduce 'delete' for delete a contact"); //borrar
-            WriteLine("Introduce 'find' for delete a contact"); //find
+            WriteLine("Introduce 'exit' for to finish the program"); // finish the program 
+            WriteLine("Introduce 'introduce' for to create a contact"); // create and SAVE new Person
+            WriteLine("Introduce 'update' for to edit an existens contact by Id"); // edit the Contact information
+                                                                                   //For to UPDATE you must know the person Id so: number 1: use 'find' then 2: use 'update'
+            WriteLine("Introduce 'show' for to see all the contacts"); // show all the Persons in the Adressbook
+            WriteLine("Introduce 'delete' for delete a contact by Id"); //delete a Contact
+            WriteLine("Introduce 'find' for to search a contact by Name"); //Search contact in the Adressbook
 
             string command;
 
@@ -166,11 +165,11 @@ namespace InlämningsuppgiftAdressbokAlejandraLopez
                     WriteLine("Press Enter to Save the contact");
                     ReadKey();
                     bookContac.Add(person);
-                    
+
                 }
                 else if (command == "delete")
                 {
-                    WriteLine("Introduce the Code of the contact that you want delete: ");
+                    WriteLine("Introduce the Code(Id) of the contact that you want delete, if you dont know the Id use 'find' option first: ");
                     var code = ReadLine();
                     bookContac.Delete(code);
                 }
@@ -183,7 +182,7 @@ namespace InlämningsuppgiftAdressbokAlejandraLopez
                     foreach (var person in listPerson)
                     {
                         WriteLine("{0,-10}{1,-20}{2,-25}{3,-30}{4,-35}",
-                        person.Id.ToString().Substring(0,8).ToUpper(), person.Name, person.Adress, person.Telefon, person.Email);
+                        person.Id.ToString().Substring(0, 8).ToUpper(), person.Name, person.Adress, person.Telefon, person.Email);
                     }
                     WriteLine("---------------------------------" +
                         "----------------------------------------------------------------");
@@ -207,11 +206,12 @@ namespace InlämningsuppgiftAdressbokAlejandraLopez
                 }
                 else if (command == "update")
                 {
-                    WriteLine("Introduce the Code of the contact that you want update: ");
+                    WriteLine("Introduce the Code(Id)XXXXXXXX of the contact that you want update, if you dont know the Id use 'find' option first: ");
                     var code = ReadLine();
                     var person = bookContac.FindByCodePerson(code);
                     var personOld = bookContac.FindByCodePerson(code);
 
+                    WriteLine($"This is the contact to edit:{personOld.Name} {personOld.Adress} {personOld.Telefon} {personOld.Email} ");
                     Write("Introduce a contact NAME: ");
                     person.Name = ReadLine().ToUpper();
                     Write("Introduce a contact ADDRESS: ");
@@ -233,7 +233,7 @@ namespace InlämningsuppgiftAdressbokAlejandraLopez
         }
 
     }
-    
-    
-    
+
+
+
 }
