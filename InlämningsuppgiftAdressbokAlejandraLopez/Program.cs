@@ -10,6 +10,12 @@ using System.Net.Http;
 
 namespace InlämningsuppgiftAdressbokAlejandraLopez
 {
+    //LINK REFERENCES:https://www.youtube.com/watch?v=NgQCVrCiPp4&pbjreload=101
+    //https://www.youtube.com/watch?v=4Oh71Pmlz7E
+    //https://docs.microsoft.com/en-us/dotnet/api/system.io.file.replace?view=netcore-3.1
+    //https://es.stackoverflow.com/questions/127148/como-hacer-una-list-de-un-objeto-y-guardarlo-en-un-txt-separado-por-tabulacione
+    //https://www.youtube.com/watch?v=NgQCVrCiPp4&feature=youtu.be
+    //Private programer lesson
     public class Person
     {
         public Guid Id { get; set; }
